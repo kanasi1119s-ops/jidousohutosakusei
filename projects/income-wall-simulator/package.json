@@ -1,0 +1,22 @@
+{
+  "name": "income-wall-simulator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "年収の壁シミュレーター（ブラウザ完結・登録不要・オフライン対応）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}

@@ -1,0 +1,52 @@
+name: income-wall-simulator CI
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'projects/income-wall-simulator/**'
+      - '.github/workflows/income-wall-simulator-ci.yml'
+  pull_request:
+    paths:
+      - 'projects/income-wall-simulator/**'
+      - '.github/workflows/income-wall-simulator-ci.yml'
+
+defaults:
+  run:
+    working-directory: projects/income-wall-simulator
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: projects/income-wall-simulator/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E tests
+        run: npm run test:e2e
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: income-wall-simulator-dist
+          path: projects/income-wall-simulator/dist
