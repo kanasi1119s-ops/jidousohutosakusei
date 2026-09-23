@@ -1,0 +1,178 @@
+:root {
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  color-scheme: light;
+  --accent: #c0392b;
+  --bg: #fdf9f6;
+  --card-bg: #ffffff;
+  --text: #2c2622;
+  --muted: #6b6259;
+  --border: #e6ddd3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header.app-header {
+  padding: 24px 0 8px;
+}
+
+header.app-header h1 {
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+}
+
+header.app-header p.tagline {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.badge {
+  background: #fff2ec;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+input[type='number'],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #fff;
+  color: var(--text);
+}
+
+button {
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.result-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 4px 0 0;
+}
+
+.result-note {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+table.records {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+table.records th,
+table.records td {
+  border-bottom: 1px solid var(--border);
+  padding: 6px 4px;
+  text-align: left;
+}
+
+.disclaimer {
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+footer.app-footer {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 24px 0 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #1c1917;
+    --card-bg: #262220;
+    --text: #f2ece6;
+    --muted: #a89e93;
+    --border: #3a342f;
+  }
+  input[type='number'],
+  select,
+  button {
+    background: #1c1917;
+    color: var(--text);
+  }
+  .badge {
+    background: #2a1e1b;
+  }
+}
+
+@media (max-width: 480px) {
+  header.app-header h1 {
+    font-size: 1.15rem;
+  }
+  .result-amount {
+    font-size: 1.6rem;
+  }
+}
