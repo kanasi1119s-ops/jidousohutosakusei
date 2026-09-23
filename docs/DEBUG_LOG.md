@@ -27,9 +27,9 @@
 
 | # | 確認項目 | 結果 |
 |---|---|---|
-| 1 | リポジトリを新規clone → `npm install` → `npm run check`（lint+typecheck+test） | 成功（下記コマンド実行ログ参照） |
-| 2 | `npm run build` でビルド | 成功 |
-| 3 | ビルド済み`dist/`を簡易HTTPサーバーで配信し、実際にブラウザ相当（Playwright）で開けるか | 成功。E2E全18件を`vite preview`（ビルド済み資産を配信）に対して実行し成功 |
-| 4 | Round1・Round2の修正によって新たに壊れた箇所がないかの回帰 | ユニットテスト19件・E2E18件が全件成功。回帰なし |
+| 1 | 別ディレクトリに`git clone`した上で`npm install`→`eslint`→`tsc --noEmit`→`vitest run`を実行 | 成功。ユニットテスト19件全件成功。READMEの手順だけで再現できることを確認 |
+| 2 | クリーンcloneで`vite build` | 成功 |
+| 3 | ビルド済み`dist/`を`python3 -m http.server`で配信し、`curl`で実際にHTMLが取得できるか（文字化けなく`<title>`に日本語が正しく表示されるか） | 成功。HTTP 200、`<title>ふるさと納税 控除上限額シミュレーター（登録不要・データはブラウザ内のみ）</title>`が文字化けなく取得できた |
+| 4 | Playwright E2E（`vite preview`配信）を元リポジトリで再実行し、Round1・Round2の修正によって新たに壊れた箇所がないかの回帰確認 | ユニットテスト19件・E2E18件（chromium/mobile）が全件成功。回帰なし |
 
 重大度「高」は0件（Round1・Round2で検出した2件はいずれもそのラウンド内で修正・再検証済み）。
