@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:standalone": "vite build --config vite.standalone.config.ts",
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
@@ -23,6 +24,7 @@
     "typescript": "^5.6.0",
     "vite": "^8.3.0",
     "vite-plugin-pwa": "^1.3.0",
+    "vite-plugin-singlefile": "^2.3.3",
     "vitest": "^5.0.1"
   }
 }

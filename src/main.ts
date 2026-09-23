@@ -45,7 +45,7 @@ function recordsTableHtml(records: SavedRecord[]): string {
   `
 }
 
-function render(): void {
+export function render(): void {
   const app = document.getElementById('app')
   if (!app) return
 
@@ -214,13 +214,5 @@ function wireEvents(): void {
       clearAllRecords()
       refreshRecordsArea()
     }
-  })
-}
-
-render()
-
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  window.addEventListener('load', () => {
-    import('virtual:pwa-register').then(({ registerSW }) => registerSW({ immediate: true }))
   })
 }

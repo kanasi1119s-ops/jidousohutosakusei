@@ -1,5 +1,6 @@
 node_modules
 dist
+dist-standalone
 dist-zip
 *.log
 .DS_Store
