@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#20507a" />
+  <rect x="16" y="12" width="32" height="40" rx="2" fill="#ffffff" />
+  <rect x="21" y="20" width="22" height="3" fill="#20507a" />
+  <rect x="21" y="28" width="22" height="3" fill="#20507a" />
+  <rect x="21" y="36" width="14" height="3" fill="#20507a" />
+  <text x="32" y="49" font-size="8" text-anchor="middle" fill="#20507a" font-family="sans-serif">請求</text>
+</svg>
