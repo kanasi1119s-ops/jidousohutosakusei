@@ -66,7 +66,7 @@ test('CSVエクスポートがBOM付きUTF-8で日本語ヘッダーを含み、
   const text = buf.toString('utf-8')
   expect(text).toContain('項目名')
   expect(text).toContain('コーディング')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(String.fromCharCode(0xfffd))
 })
 
 test('JSONエクスポート→全削除→インポートで往復できる', async ({ page }) => {

@@ -8,3 +8,4 @@
 | 日付 | プロジェクト名 | サイト形態 | パス | スコア | 状態 |
 |---|---|---|---|---|---|
 | 2026-09-23 | income-wall-simulator（年収の壁シミュレーター） | W1 | `projects/income-wall-simulator` | 21/25 | MVP完成 |
+| 2026-09-29 | withholding-tax-calculator（源泉徴収税額かんたん計算） | W1 | `projects/withholding-tax-calculator` | 21/25 | MVP完成 |

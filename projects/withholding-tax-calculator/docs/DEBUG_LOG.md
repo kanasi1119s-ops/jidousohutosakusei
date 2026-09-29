@@ -13,3 +13,10 @@
 
 ## Round 3（観点: クリーン環境・回帰）
 クリーン環境（git管理ファイルのみを別ディレクトリへ複製）で `npm ci` → `npm run check` → `npm test` → `npm run build` → `npm run test:e2e` を実行。ビルド済み dist/ を `python3 -m http.server` で配信しHTTP 200を確認。結果は下記に追記。
+
+### Round 3 結果
+| # | 問題 | 再現手順 | 重大度 | 対応 | 修正コミット | 再検証結果 |
+|---|---|---|---|---|---|---|
+| 1 | E2Eソースに置換文字U+FFFDのリテラルが混入（最終文字化けチェックで検出） | 全ファイルのUTF-8検査 | 低 | `String.fromCharCode(0xfffd)` に置換 | 本コミット | 検査でヒット0 |
+
+クリーンクローン: `npm ci` → check → ユニット28件 → E2E20件（Chromium/Pixel 7 各10）すべて成功。`dist/` をhttp.serverで配信しHTTP 200・`text/html` を確認。
