@@ -1,0 +1,19 @@
+{
+  "name": "源泉徴収税額かんたん計算",
+  "short_name": "源泉徴収計算",
+  "description": "原稿料・デザイン料・士業報酬などの源泉徴収税額を計算する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#1f5f8f",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
