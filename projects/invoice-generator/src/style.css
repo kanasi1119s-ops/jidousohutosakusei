@@ -1,0 +1,103 @@
+:root {
+  --bg: #f6f7f5;
+  --fg: #1d2530;
+  --muted: #5b6672;
+  --card: #ffffff;
+  --line: #d5dbe1;
+  --accent: #2b4c7e;
+  --accent-fg: #ffffff;
+  --warn-bg: #fff4d6;
+  --warn-fg: #6b4e00;
+  --err: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181d;
+    --fg: #e6eaee;
+    --muted: #9aa5b1;
+    --card: #1c222a;
+    --line: #333d48;
+    --accent: #7aa2e3;
+    --accent-fg: #0b1220;
+    --warn-bg: #3a2f10;
+    --warn-fg: #ffd98a;
+    --err: #ff8a80;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  line-height: 1.6;
+}
+.site-header { padding: 16px; max-width: 1280px; margin: 0 auto; }
+.site-header h1 { margin: 0; font-size: 1.4rem; }
+.lead { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 0 16px 32px; max-width: 1280px; margin: 0 auto; }
+@media (min-width: 960px) { .layout { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: start; } .preview-wrap { position: sticky; top: 8px; } }
+fieldset { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 12px; padding: 12px; min-width: 0; }
+legend { font-weight: 700; padding: 0 6px; }
+label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+input, select, textarea, button { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+input, select, textarea { width: 100%; display: block; margin-top: 2px; }
+button { cursor: pointer; background: var(--card); width: auto; }
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 700; }
+button.secondary { color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.row > label { flex: 1 1 140px; }
+.row > label.grow { flex: 2 1 200px; }
+.items { display: grid; gap: 8px; margin-bottom: 8px; }
+.item-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; border: 1px dashed var(--line); border-radius: 6px; padding: 8px; align-items: end; }
+.item-cell { margin: 0; }
+.item-cell.name { grid-column: 1 / -1; }
+.item-amount { display: block; padding: 6px 0; font-variant-numeric: tabular-nums; color: var(--fg); }
+@media (min-width: 560px) { .item-row { grid-template-columns: 3fr 1fr 1.4fr 1.2fr 1.4fr auto; } .item-cell.name { grid-column: auto; } }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.file-btn { position: relative; display: inline-block; border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; cursor: pointer; color: var(--fg); margin: 0; background: var(--card); }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
+.hint { font-size: 0.8rem; color: var(--muted); margin: 4px 0 0; }
+.message { min-height: 1.4em; font-size: 0.85rem; margin: 4px 0; }
+.message.error { color: var(--err); }
+.small-h { font-size: 0.95rem; margin: 12px 0 4px; }
+.saved-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.saved-list li { display: flex; gap: 6px; }
+.saved-list .saved-open { flex: 1; text-align: left; overflow-wrap: anywhere; }
+.saved-list .empty { color: var(--muted); font-size: 0.85rem; }
+.disclaimer { font-size: 0.8rem; color: var(--muted); }
+.warning { background: var(--warn-bg); color: var(--warn-fg); border-radius: 6px; padding: 8px 12px; margin: 0 0 8px; font-size: 0.85rem; }
+.warning:empty { display: none; }
+
+/* 請求書プレビュー（紙面）。常に白地・黒文字で印刷と同じ見た目にする */
+.sheet { background: #fff; color: #111; border: 1px solid var(--line); border-radius: 4px; padding: 20px; overflow-x: auto; font-size: 0.9rem; }
+.sheet h2, .sheet h3, .sheet p { margin: 0; }
+.pv-title { text-align: center; font-size: 1.6rem; letter-spacing: 0.4em; margin-bottom: 16px !important; }
+.pv-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.pv-client-name { font-size: 1.15rem; border-bottom: 2px solid #111; padding-bottom: 2px; overflow-wrap: anywhere; }
+.pv-meta dl { display: grid; grid-template-columns: auto auto; gap: 2px 12px; margin: 0; }
+.pv-meta dt { color: #555; }
+.pv-meta dd { margin: 0; }
+.pv-issuer { text-align: right; margin-bottom: 12px; overflow-wrap: anywhere; }
+.pv-issuer-name { font-weight: 700; }
+.pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.pv-total-line { font-size: 1.1rem; margin: 12px 0 !important; border: 1px solid #111; padding: 8px 12px; }
+.pv-total-line strong { font-size: 1.4rem; margin-left: 12px; font-variant-numeric: tabular-nums; }
+.sheet table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.sheet th, .sheet td { border: 1px solid #999; padding: 4px 6px; text-align: left; }
+.sheet thead th { background: #eef1f5; }
+.sheet .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pv-name { overflow-wrap: anywhere; }
+.pv-groups { max-width: 420px; margin-left: auto; }
+.pv-note { font-size: 0.8rem; color: #444; margin-bottom: 8px !important; }
+.pv-block { margin-top: 12px; }
+.pv-block h3 { font-size: 0.9rem; border-bottom: 1px solid #999; margin-bottom: 4px; }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .layout { display: block; padding: 0; max-width: none; }
+  .preview-wrap { position: static; }
+  .sheet { border: none; padding: 0; overflow: visible; font-size: 10.5pt; }
+}
