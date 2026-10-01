@@ -60,7 +60,7 @@ test('CSVエクスポートがBOM付きUTF-8で日本語を含み、ファイル
   const text = buf.toString('utf-8')
   expect(text).toContain('品名')
   expect(text).toContain('ウェブ制作,1,30000,10%,30000')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('保存→JSONバックアップ→全削除→インポートで往復できる', async ({ page }) => {

@@ -1,6 +1,6 @@
 import { calcTotals, type Invoice } from './calc'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 /** 表計算ソフトで式として解釈されうる先頭文字を無害化する（CSVインジェクション対策）。 */
 function escapeCsvField(value: string): string {

@@ -31,7 +31,7 @@ describe('parseImport', () => {
   it('BOM付きでも読める', () => {
     const inv = newInvoice()
     inv.clientName = '株式会社テスト'
-    const text = '﻿' + JSON.stringify({ version: 1, invoices: [inv] })
+    const text = '\uFEFF' + JSON.stringify({ version: 1, invoices: [inv] })
     expect(parseImport(text)[0].clientName).toBe('株式会社テスト')
   })
   it('壊れたJSON・空はエラー', () => {
