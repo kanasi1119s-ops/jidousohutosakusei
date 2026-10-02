@@ -14,3 +14,8 @@
 
 ## Round 3（観点: クリーン環境・回帰）
 Phase 4 の末尾に追記（下記）
+
+## Round 3（観点: クリーン環境・回帰）
+| # | 問題 | 再現手順 | 重大度 | 対応 | 修正コミット | 再検証結果 |
+|---|---|---|---|---|---|---|
+| - | 検出なし | 新規clone→`npm ci`→check→test→E2E→dist配信 | - | - | - | npm audit 0件 / ユニット15件 / E2E 28件(chromium+mobile)成功。distをサブディレクトリ(`/sub/`)に配置し簡易HTTPサーバーで配信、index.html/manifest が200で取得でき `<meta charset="utf-8">` を確認 |
