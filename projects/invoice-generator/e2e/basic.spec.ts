@@ -15,7 +15,7 @@ test('日本語の見出し・ボタン文言が正しく表示される', async
   await expect(page.getByRole('heading', { level: 1, name: '請求書ジェネレーター' })).toBeVisible()
   await expect(page.getByRole('button', { name: '印刷 / PDFで保存' })).toBeVisible()
   await expect(page.getByRole('button', { name: '明細CSV' })).toBeVisible()
-  await expect(page.locator('body')).not.toContainText('�')
+  await expect(page.locator('body')).not.toContainText(String.fromCharCode(0xfffd))
 })
 
 test('入力に応じて税額・合計がプレビューに反映される', async ({ page }) => {
@@ -71,7 +71,7 @@ test('明細CSVは先頭がBOM(EF BB BF)で、ファイル名は英数字のみ'
   const text = buf.toString('utf8')
   expect(text).toContain('品目')
   expect(text).toContain('株式会社サンプル')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(String.fromCharCode(0xfffd))
 })
 
 test('入力はリロード後も復元される', async ({ page }) => {
