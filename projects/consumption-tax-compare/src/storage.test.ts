@@ -28,7 +28,7 @@ describe('csv', () => {
     expect(csv.charCodeAt(0)).toBe(0xfeff)
     expect(csv).toContain('2027年分')
     expect(csv).toContain('合計(円・負数は還付)')
-    expect(csv).not.toContain('�')
+    expect(csv).not.toContain(String.fromCharCode(0xfffd))
     expect(csv.endsWith('\r\n')).toBe(true)
   })
 })
