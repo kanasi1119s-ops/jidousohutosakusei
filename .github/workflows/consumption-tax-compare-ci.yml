@@ -1,0 +1,37 @@
+name: consumption-tax-compare CI
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'projects/consumption-tax-compare/**'
+      - '.github/workflows/consumption-tax-compare-ci.yml'
+  pull_request:
+    paths:
+      - 'projects/consumption-tax-compare/**'
+      - '.github/workflows/consumption-tax-compare-ci.yml'
+
+defaults:
+  run:
+    working-directory: projects/consumption-tax-compare
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: projects/consumption-tax-compare/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        with:
+          name: consumption-tax-compare-dist
+          path: projects/consumption-tax-compare/dist
