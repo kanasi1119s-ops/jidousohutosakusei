@@ -1,0 +1,14 @@
+{
+  "name": "適格請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "登録不要・オフライン対応のブラウザ完結型インボイス（適格請求書）作成ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#2f4f8f",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
