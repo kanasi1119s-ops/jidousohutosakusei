@@ -67,7 +67,7 @@ test.describe('基本フロー', () => {
     const text = buf.toString('utf-8')
     expect(text).toContain('株式会社サンプル')
     expect(text).toContain('ロゴデザイン一式')
-    expect(text).not.toContain('�')
+    expect(text).not.toContain('\uFFFD')
   })
 
   test('保存した請求書と発行者情報は再読み込み後も復元される', async ({ page }) => {
