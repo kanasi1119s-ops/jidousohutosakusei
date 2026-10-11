@@ -76,7 +76,7 @@ test('CSVがBOM付きUTF-8で、ファイル名は英数字のみ', async ({ pag
   const text = buf.toString('utf-8')
   expect(text).toContain('請求書番号')
   expect(text).toContain('株式会社サンプル')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('JSONバックアップのエクスポート→インポートで内容が復元される', async ({ page }) => {
