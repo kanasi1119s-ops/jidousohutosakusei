@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>インボイス対応 請求書メーカー</title>
+    <meta
+      name="description"
+      content="適格請求書（インボイス）の記載事項に沿った請求書を作成できる、登録不要・オフライン対応のブラウザ完結ツールです。入力データは一切外部送信されません。"
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#2d4a8a" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; manifest-src 'self'; base-uri 'self'; form-action 'self'; connect-src 'self'"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>インボイス対応 請求書メーカー</h1>
+      <p class="tagline">
+        登録不要・オフライン対応。入力したデータはこのブラウザの中だけに保存され、外部へ送信されません。
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="editor" aria-label="請求書の入力">
+        <details class="panel" open>
+          <summary>保存済みの請求書</summary>
+          <div class="row">
+            <label for="invoice-select">請求書を選ぶ</label>
+            <select id="invoice-select"></select>
+          </div>
+          <div class="button-row">
+            <button type="button" id="new-invoice">新規作成</button>
+            <button type="button" id="duplicate-invoice">複製</button>
+            <button type="button" id="delete-invoice" class="danger">削除</button>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>発行者情報（自分の情報・全請求書で共通）</summary>
+          <div class="row">
+            <label for="issuer-name">氏名または名称</label>
+            <input id="issuer-name" data-bind="issuer.name" type="text" autocomplete="off" />
+          </div>
+          <div class="row">
+            <label for="issuer-reg">登録番号（例: T1234567890123）</label>
+            <input id="issuer-reg" data-bind="issuer.registrationNumber" type="text" autocomplete="off" />
+            <p id="reg-message" class="field-message" aria-live="polite"></p>
+          </div>
+          <div class="row">
+            <label for="issuer-address">住所</label>
+            <input id="issuer-address" data-bind="issuer.address" type="text" autocomplete="off" />
+          </div>
+          <div class="row">
+            <label for="issuer-contact">連絡先（電話・メール）</label>
+            <input id="issuer-contact" data-bind="issuer.contact" type="text" autocomplete="off" />
+          </div>
+          <div class="row">
+            <label for="issuer-bank">振込先</label>
+            <textarea id="issuer-bank" data-bind="issuer.bank" rows="2"></textarea>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>請求書情報</summary>
+          <div class="row">
+            <label for="inv-recipient">請求先（宛名）</label>
+            <input id="inv-recipient" data-bind="invoice.recipient" type="text" autocomplete="off" />
+          </div>
+          <div class="row">
+            <label for="inv-subject">件名</label>
+            <input id="inv-subject" data-bind="invoice.subject" type="text" autocomplete="off" />
+          </div>
+          <div class="row-group">
+            <div class="row">
+              <label for="inv-number">請求書番号</label>
+              <input id="inv-number" data-bind="invoice.number" type="text" autocomplete="off" />
+            </div>
+            <div class="row">
+              <label for="inv-issue">発行日</label>
+              <input id="inv-issue" data-bind="invoice.issueDate" type="date" />
+            </div>
+            <div class="row">
+              <label for="inv-due">支払期限</label>
+              <input id="inv-due" data-bind="invoice.dueDate" type="date" />
+            </div>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>明細と税計算</summary>
+          <div class="row-group">
+            <div class="row">
+              <label for="inv-mode">金額の入力方法</label>
+              <select id="inv-mode" data-bind="invoice.priceMode">
+                <option value="exclusive">税抜で入力</option>
+                <option value="inclusive">税込で入力</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="inv-rounding">消費税の端数処理</label>
+              <select id="inv-rounding" data-bind="invoice.rounding">
+                <option value="floor">切り捨て</option>
+                <option value="round">四捨五入</option>
+                <option value="ceil">切り上げ</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="lines" aria-label="明細">
+              <thead>
+                <tr>
+                  <th>品名</th>
+                  <th>数量</th>
+                  <th>単位</th>
+                  <th>単価</th>
+                  <th>税率</th>
+                  <th>金額</th>
+                  <th><span class="visually-hidden">操作</span></th>
+                </tr>
+              </thead>
+              <tbody id="lines-body"></tbody>
+            </table>
+          </div>
+          <div class="button-row">
+            <button type="button" id="add-line">明細を追加</button>
+          </div>
+          <div class="row checkbox-row">
+            <label>
+              <input id="inv-withholding" data-bind="invoice.withholding" type="checkbox" />
+              報酬・料金等の源泉徴収税額を差し引く（10.21%、100万円超の部分は20.42%）
+            </label>
+          </div>
+          <div class="row">
+            <label for="inv-notes">備考</label>
+            <textarea id="inv-notes" data-bind="invoice.notes" rows="3"></textarea>
+          </div>
+        </details>
+
+        <details class="panel" open>
+          <summary>記載事項チェック（適格請求書）</summary>
+          <ul id="check-list" class="check-list"></ul>
+          <p class="note">
+            このチェックは入力漏れの目安です。法的な要件を満たすことの保証ではありません。
+          </p>
+        </details>
+
+        <details class="panel" open>
+          <summary>保存・書き出し</summary>
+          <div class="button-row">
+            <button type="button" id="print-invoice" class="primary">印刷 / PDFで保存</button>
+            <button type="button" id="export-csv">請求書一覧をCSVで保存</button>
+            <button type="button" id="export-json">バックアップ（JSON）</button>
+            <label class="file-button" for="import-json">バックアップを読み込む</label>
+            <input id="import-json" type="file" accept="application/json,.json" class="visually-hidden" />
+          </div>
+          <p id="status" class="field-message" role="status" aria-live="polite"></p>
+          <p class="note">
+            データはこのブラウザ内（localStorage）に保存されます。ブラウザのデータ消去や端末の変更で失われるため、
+            定期的にバックアップ（JSON）を保存してください。
+          </p>
+        </details>
+      </section>
+
+      <section class="preview-wrap" aria-label="請求書プレビュー">
+        <h2 class="preview-title">プレビュー</h2>
+        <article id="invoice-preview" class="invoice-sheet"></article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        本ツールは請求書の作成を補助するもので、税務・法律上の助言ではありません。消費税の取扱い・登録番号の有効性・
+        源泉徴収の要否は、国税庁の公表情報をご確認のうえ、必要に応じて税理士等の専門家にご相談ください。
+        計算結果の最終的な正確性はご自身でご確認ください。
+      </p>
+    </footer>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
