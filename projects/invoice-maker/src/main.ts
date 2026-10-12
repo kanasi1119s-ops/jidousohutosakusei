@@ -157,7 +157,7 @@ const form = h(
     h('div', { class: 'actions' }, h('button', { type: 'button', id: 'add-item', class: 'secondary' }, '＋ 明細を追加')),
     h(
       'div',
-      { class: 'field wide', style: 'margin-top:10px' },
+      { class: 'field wide with-gap' },
       h(
         'label',
         {},

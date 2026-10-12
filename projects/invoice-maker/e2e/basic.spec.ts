@@ -1,6 +1,8 @@
 import { test, expect, type Page } from '@playwright/test'
 import fs from 'node:fs'
 
+const REPLACEMENT_CHAR = String.fromCharCode(0xfffd)
+
 async function fillItem(page: Page, row: number, name: string, qty: string, price: string, rate?: string) {
   const tr = page.locator('#items-body tr').nth(row)
   await tr.locator('[data-field="name"]').fill(name)
@@ -90,7 +92,7 @@ test('CSVがBOM付きUTF-8で日本語を含み、ファイル名が英数字の
   const text = bytes.toString('utf8')
   expect(text).toContain('品名,数量')
   expect(text).toContain('制作費')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(REPLACEMENT_CHAR)
 })
 
 test('バックアップJSONの書き出し→削除→読み込みで復元できる', async ({ page }) => {

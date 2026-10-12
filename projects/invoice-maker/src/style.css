@@ -101,6 +101,10 @@ h2 {
   min-width: 0;
 }
 
+.field.with-gap {
+  margin-top: 10px;
+}
+
 .field.wide {
   grid-column: 1 / -1;
 }

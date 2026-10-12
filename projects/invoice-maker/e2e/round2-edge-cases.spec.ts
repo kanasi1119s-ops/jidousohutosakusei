@@ -1,6 +1,8 @@
 import { test, expect, type Page } from '@playwright/test'
 import fs from 'node:fs'
 
+const REPLACEMENT_CHAR = String.fromCharCode(0xfffd)
+
 async function fillRow(page: Page, row: number, f: Record<string, string>) {
   const tr = page.locator('#items-body tr').nth(row)
   for (const [k, v] of Object.entries(f)) await tr.locator(`[data-field="${k}"]`).fill(v)
@@ -115,13 +117,13 @@ test('半角カナ・異体字・絵文字・サロゲートペアが保存・�
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#export-csv')])
   const bytes = fs.readFileSync((await dl.path())!)
   expect(bytes.toString('utf8')).toContain(text)
-  expect(bytes.toString('utf8')).not.toContain('�')
+  expect(bytes.toString('utf8')).not.toContain(REPLACEMENT_CHAR)
 })
 
 test('画面全体に文字化け（置換文字）がない', async ({ page }) => {
   await page.goto('/')
   const text = await page.evaluate(() => document.body.innerText)
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(REPLACEMENT_CHAR)
   expect(text).not.toMatch(/ã\u0081|ã\u0082|æ\u0096/)
 })
 
@@ -156,4 +158,17 @@ test('オフラインでも再読み込みして計算・保存データの復�
   await fillRow(page, 0, { name: 'offline', quantity: '2', unitPriceYen: '500' })
   await expect(page.locator('#grand-total')).toHaveText('1,100円')
   await context.setOffline(false)
+})
+
+test('操作してもコンソールエラー（CSP違反を含む）が出ない', async ({ page }) => {
+  const errors: string[] = []
+  page.on('console', (m) => m.type() === 'error' && errors.push(m.text()))
+  page.on('pageerror', (e) => errors.push(String(e)))
+  await page.goto('/')
+  await fillRow(page, 0, { name: 'x', unitPriceYen: '1000' })
+  await page.check('#withholding')
+  await page.click('#add-item')
+  await page.click('#save-invoice')
+  await page.emulateMedia({ media: 'print' })
+  expect(errors).toEqual([])
 })
