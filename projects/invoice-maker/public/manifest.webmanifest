@@ -1,0 +1,14 @@
+{
+  "name": "インボイス対応 請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "適格請求書の記載項目と税率ごとの端数処理に対応した、登録不要・オフライン対応のブラウザ完結の請求書作成ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#27408b",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
