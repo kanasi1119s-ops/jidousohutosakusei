@@ -1,0 +1,244 @@
+:root {
+  color-scheme: light dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN',
+    'Noto Sans JP',
+    'Yu Gothic UI',
+    Meiryo,
+    sans-serif;
+  background: #f5f6f9;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.hidden {
+  display: none;
+}
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+.subtitle {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+.privacy-badge {
+  display: inline-block;
+  background: #e8edf8;
+  color: #2b4c9b;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin: 4px 4px 12px 0;
+}
+form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.field {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+input[type='number'] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #2b4c9b;
+  background: #2b4c9b;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button.secondary {
+  background: #fff;
+  color: #2b4c9b;
+}
+.errors {
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+.summary {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid #eee;
+}
+.status-over {
+  color: #b3261e;
+  font-weight: 600;
+}
+.status-under {
+  color: #2b4c9b;
+  font-weight: 600;
+}
+.disclaimer {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 16px;
+  border-top: 1px dashed #ccc;
+  padding-top: 12px;
+}
+footer {
+  margin-top: 24px;
+  font-size: 0.78rem;
+  color: #888;
+  text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #14161a;
+    color: #eee;
+  }
+  form,
+  .summary {
+    background: #1e2126;
+    box-shadow: none;
+  }
+  input[type='number'] {
+    background: #14161a;
+    border-color: #444;
+    color: #eee;
+  }
+  th,
+  td {
+    border-color: #333;
+  }
+  .disclaimer,
+  footer {
+    color: #999;
+  }
+}
+.row-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+input[type='text'],
+input[type='date'],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  background: #fff;
+  color: inherit;
+}
+.table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.table-wrap table {
+  min-width: 640px;
+}
+td.num,
+th.num {
+  text-align: right;
+  white-space: nowrap;
+}
+button.danger {
+  background: #fff;
+  color: #b3261e;
+  border-color: #b3261e;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+.notice {
+  background: #fff8e1;
+  border: 1px solid #f0d98a;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  margin: 12px 0;
+  color: #5a4600;
+}
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.big {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+small.muted {
+  color: #666;
+}
+@media (prefers-color-scheme: dark) {
+  .panel {
+    background: #1e2126;
+    box-shadow: none;
+  }
+  input[type='text'],
+  input[type='date'],
+  select {
+    background: #14161a;
+    border-color: #444;
+  }
+  .notice {
+    background: #3a3213;
+    border-color: #6b5a1c;
+    color: #f3e3a3;
+  }
+  small.muted {
+    color: #aaa;
+  }
+}
+.actions.no-top {
+  margin-top: 0;
+}
+.inline-label {
+  align-self: center;
+}
+select.auto-width {
+  width: auto;
+}

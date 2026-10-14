@@ -1,0 +1,14 @@
+{
+  "name": "インボイス経過措置 仕入税額控除計算機",
+  "short_name": "控除計算機",
+  "description": "免税事業者等からの仕入れの控除割合（80%→70%→50%→30%）を一括試算する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f9",
+  "theme_color": "#2b4c9b",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

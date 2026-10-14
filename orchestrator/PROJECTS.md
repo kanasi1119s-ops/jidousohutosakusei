@@ -8,3 +8,4 @@
 | 日付 | プロジェクト名 | サイト形態 | パス | スコア | 状態 |
 |---|---|---|---|---|---|
 | 2026-09-23 | income-wall-simulator（年収の壁シミュレーター） | W1 | `projects/income-wall-simulator` | 21/25 | MVP完成 |
+| 2026-10-14 | invoice-credit-calculator（インボイス経過措置 仕入税額控除計算機） | W1 | `projects/invoice-credit-calculator` | 21/25 | MVP完成（一次情報確認待ち） |
