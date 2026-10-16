@@ -6,3 +6,7 @@
 - `projects/`: 個々のプロジェクト（例: `income-wall-simulator`）
 
 運用上の注記や各プロジェクトの詳細は `orchestrator/reports/` 配下の日次レポートを参照してください。
+
+## プロジェクト一覧
+- `projects/income-wall-simulator`: 年収の壁シミュレーター
+- `projects/invoice-maker`: 請求書メーカー（インボイス対応）
