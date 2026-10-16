@@ -1,0 +1,74 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  background: #f4f6fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+#app { max-width: 920px; margin: 0 auto; padding: 16px; }
+.hidden { display: none !important; }
+.print-only { display: none; }
+h1 { font-size: 1.4rem; margin: 0 0 0.25rem; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+h3 { font-size: 1rem; margin: 16px 0 8px; }
+.subtitle { color: #555; font-size: 0.9rem; margin-top: 0; }
+.badge { display: inline-block; background: #e3ecf8; color: #2b5fa8; border-radius: 999px; padding: 4px 12px; font-size: 0.8rem; margin: 4px 4px 12px 0; }
+.card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+summary { cursor: pointer; font-weight: 600; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field.wide { grid-column: 1 / -1; }
+.field.check { margin: 12px 0; }
+label { font-size: 0.85rem; font-weight: 600; }
+input, select, textarea { font: inherit; padding: 8px; border: 1px solid #b9c2d0; border-radius: 6px; background: #fff; color: inherit; width: 100%; }
+input[type="checkbox"] { width: auto; }
+button { font: inherit; padding: 10px 16px; border: 0; border-radius: 8px; background: #2b5fa8; color: #fff; cursor: pointer; }
+button.secondary { background: #e3ecf8; color: #1d4580; }
+button.small { padding: 4px 10px; font-size: 0.85rem; white-space: nowrap; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid #f2a900; outline-offset: 1px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.errors { color: #b00020; font-size: 0.9rem; }
+.hint { color: #555; font-size: 0.85rem; }
+.table-wrap { overflow-x: auto; }
+.lines-edit { width: 100%; border-collapse: collapse; min-width: 640px; }
+.lines-edit th, .lines-edit td { padding: 4px; text-align: left; font-size: 0.85rem; vertical-align: middle; }
+.num { text-align: right; white-space: nowrap; }
+.saved-list { list-style: none; padding: 0; margin: 0 0 8px; }
+.saved-list li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid #e5e9f0; }
+.saved-label { flex: 1 1 240px; }
+.disclaimer { color: #555; font-size: 0.8rem; }
+
+.invoice-sheet { background: #fff; color: #000; font-size: 0.85rem; }
+.inv-title { text-align: center; letter-spacing: 0.5em; font-size: 1.4rem; margin: 0 0 16px; }
+.inv-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.inv-head p { margin: 2px 0; }
+.inv-client-name { font-size: 1.15rem; font-weight: 700; border-bottom: 1px solid #000; }
+.inv-total strong { font-size: 1.3rem; }
+.inv-issuer { text-align: right; }
+.inv-issuer-name { font-weight: 700; font-size: 1rem; }
+.invoice-sheet table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.invoice-sheet th, .invoice-sheet td { border: 1px solid #666; padding: 4px 6px; font-size: 0.85rem; }
+.invoice-sheet th { background: #eef2f8; }
+.invoice-sheet .inv-sum { width: 50%; margin-left: auto; }
+.inv-sum .grand th, .inv-sum .grand td { font-size: 1rem; font-weight: 700; }
+.inv-box { border: 1px solid #666; padding: 6px 8px; margin: 8px 0; }
+.inv-box p { margin: 2px 0; }
+.inv-small { font-size: 0.75rem; margin: 0; }
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .inv-issuer { text-align: left; }
+  .invoice-sheet .inv-sum { width: 100%; }
+}
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; }
+  .screen-only { display: none !important; }
+  .print-only { display: block; }
+  #app { padding: 0; max-width: none; }
+  .invoice-sheet { font-size: 10.5pt; width: calc(100% - 3px); margin: 0 1px; }
+  .invoice-sheet table { table-layout: auto; }
+}
