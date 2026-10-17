@@ -6,7 +6,7 @@ export interface Threshold {
   description: string
 }
 
-export const AS_OF = '2026-09-23'
+export const AS_OF = '2026-10-17'
 
 export const SOURCE_NOTE =
   '各しきい値は国税庁・厚生労働省の公表資料および税制改正大綱の報道内容に基づく一般的な目安です（基準日: ' +
@@ -35,7 +35,7 @@ export const THRESHOLDS: Threshold[] = [
     manYen: 106,
     category: 'social',
     description:
-      '一定規模以上の企業で働く場合の社会保険加入の目安（月額賃金要件は2026年10月に撤廃予定とされています）',
+      '一定規模以上の企業で働く場合の社会保険加入の目安（月額賃金要件（月額8.8万円）は2026年10月に撤廃される改正が成立済みと報じられています。企業規模要件は段階的に縮小されます）',
   },
   {
     id: 'social-130',
