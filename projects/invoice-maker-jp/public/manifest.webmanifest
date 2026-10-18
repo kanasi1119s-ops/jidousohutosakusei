@@ -1,0 +1,14 @@
+{
+  "name": "インボイス対応 請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "適格請求書の記載事項に沿った請求書・見積書・納品書・領収書を作成する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#1f4f8f",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
