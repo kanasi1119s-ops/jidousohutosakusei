@@ -46,7 +46,7 @@ describe('バックアップ', () => {
       fr.onerror = () => reject(fr.error)
       fr.readAsText(blob)
     })
-    const parsed = parseBackup('﻿' + text)
+    const parsed = parseBackup('\uFEFF' + text)
     expect(parsed.documents[0].items[0]).toEqual({ name: '品', quantity: 2, unitPriceYen: 300, taxRate: 8 })
   })
   it('別形式のJSONや壊れたJSONは拒否する', () => {

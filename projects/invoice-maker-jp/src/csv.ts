@@ -1,7 +1,7 @@
 import type { Totals } from './calc'
 import { KIND_LABELS, safeFileToken, type InvoiceDoc } from './invoice'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 function escapeCsvField(value: string): string {
   // 数式インジェクション対策: =,+,-,@ で始まる文字列の先頭にシングルクォートを付ける

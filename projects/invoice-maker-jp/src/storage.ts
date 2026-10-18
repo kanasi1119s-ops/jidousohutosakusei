@@ -87,7 +87,7 @@ export function backupFileName(date: string): string {
 
 /** JSON文字列を検証して取り込む。先頭のBOMは除去する。形式が不正なら例外。 */
 export function parseBackup(text: string): Backup {
-  const body = text.replace(/^﻿/, '')
+  const body = text.replace(/^\uFEFF/, '')
   let parsed: unknown
   try {
     parsed = JSON.parse(body)

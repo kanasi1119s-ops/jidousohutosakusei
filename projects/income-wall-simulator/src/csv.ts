@@ -1,6 +1,6 @@
 import type { SimulationResult } from './calc'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 function escapeCsvField(value: string): string {
   if (/[",\n]/.test(value)) {
