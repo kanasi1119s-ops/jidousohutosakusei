@@ -1,0 +1,257 @@
+:root {
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN',
+    'Noto Sans JP',
+    'Yu Gothic UI',
+    Meiryo,
+    sans-serif;
+  background: #f4f6fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.hidden {
+  display: none !important;
+}
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+h2 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.subtitle {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+.privacy-badge {
+  display: inline-block;
+  background: #e3ebf7;
+  color: #1d3a66;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  margin: 0 6px 6px 0;
+}
+fieldset {
+  min-width: 0;
+  border: 1px solid #cfd6e2;
+  border-radius: 8px;
+  background: #fff;
+  margin: 12px 0;
+  padding: 8px 12px 12px;
+}
+legend {
+  font-weight: 600;
+  padding: 0 6px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 12px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+.field.wide {
+  grid-column: 1 / -1;
+}
+.field label {
+  margin-bottom: 2px;
+  color: #333;
+}
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid #aab4c6;
+  border-radius: 6px;
+  background: #fff;
+  min-width: 0;
+  width: 100%;
+}
+textarea {
+  min-height: 3.5em;
+  resize: vertical;
+}
+.items-wrap {
+  overflow-x: auto;
+}
+table.items {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+}
+table.items th,
+table.items td {
+  white-space: nowrap;
+  padding: 4px;
+  text-align: left;
+  font-size: 0.85rem;
+}
+table.items td.amount {
+  text-align: right;
+  white-space: nowrap;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #2b4c7e;
+  background: #2b4c7e;
+  color: #fff;
+  cursor: pointer;
+}
+button.secondary {
+  background: #fff;
+  color: #2b4c7e;
+}
+button.danger {
+  background: #fff;
+  color: #a02020;
+  border-color: #a02020;
+}
+button.small {
+  padding: 3px 8px;
+  font-size: 0.8rem;
+}
+.messages {
+  color: #a02020;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+.notice {
+  color: #1d5a2e;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+ul.saved {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.saved li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e5ee;
+}
+ul.saved li .label {
+  flex: 1 1 200px;
+}
+.disclaimer {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 24px;
+}
+
+/* ---- 請求書プレビュー（印刷対象） ---- */
+.sheet {
+  background: #fff;
+  border: 1px solid #cfd6e2;
+  padding: 24px;
+  font-size: 0.9rem;
+  color: #111;
+  overflow-x: auto;
+}
+.sheet h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+  margin: 0 0 16px;
+}
+.sheet .head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sheet .to {
+  font-size: 1.1rem;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  display: inline-block;
+  min-width: 14em;
+}
+.sheet .from {
+  text-align: right;
+  white-space: pre-wrap;
+}
+.sheet .total-line {
+  margin: 16px 0 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.sheet table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+}
+.sheet th,
+.sheet td {
+  border: 1px solid #888;
+  padding: 4px 6px;
+}
+.sheet th {
+  background: #eef2f8;
+}
+.sheet td.num {
+  text-align: right;
+  white-space: nowrap;
+}
+.sheet .sum {
+  margin-left: auto;
+  width: min(100%, 360px);
+}
+.sheet .pre {
+  white-space: pre-wrap;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  #app > *:not(#preview-section) {
+    display: none !important;
+  }
+  #preview-section h2,
+  #preview-section .print-hide {
+    display: none !important;
+  }
+  #app {
+    padding: 0;
+    max-width: none;
+  }
+  .sheet {
+    border: none;
+    padding: 0;
+    overflow: visible;
+  }
+}
