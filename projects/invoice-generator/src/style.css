@@ -1,0 +1,97 @@
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --text: #1c2430;
+  --muted: #5b6676;
+  --border: #d3dae4;
+  --accent: #2b4c7e;
+  --accent-text: #ffffff;
+  --danger: #b3261e;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+    "Yu Gothic UI", Meiryo, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161c;
+    --surface: #1b212a;
+    --text: #e6ebf2;
+    --muted: #9aa6b6;
+    --border: #333d4b;
+    --accent: #7fa6e0;
+    --accent-text: #0e1620;
+    --danger: #ff8a80;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+#app { max-width: 960px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 8px 0 4px; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.subtitle { color: var(--muted); margin: 0 0 8px; }
+.badge { display: inline-block; font-size: 0.8rem; border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; margin: 0 6px 6px 0; background: var(--surface); }
+section.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 16px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field.wide { grid-column: 1 / -1; }
+label { font-size: 0.9rem; color: var(--muted); }
+input, select, textarea, button { font: inherit; color: inherit; }
+input, select, textarea { padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); width: 100%; min-width: 0; }
+textarea { min-height: 64px; resize: vertical; }
+button { padding: 8px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+button.danger { color: var(--danger); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.check { flex-direction: row; align-items: center; gap: 8px; }
+.check input { width: auto; }
+.items { width: 100%; border-collapse: collapse; }
+.items th { text-align: left; font-size: 0.85rem; color: var(--muted); padding: 4px; }
+.items td { padding: 4px; vertical-align: top; }
+.items .amount { text-align: right; white-space: nowrap; padding-top: 12px; }
+#errors { color: var(--danger); margin: 8px 0 0; padding-left: 1.2em; }
+#errors:empty { display: none; }
+#status { color: var(--muted); min-height: 1.5em; }
+.totals { width: 100%; max-width: 420px; margin-left: auto; border-collapse: collapse; }
+.totals td { padding: 4px 0; }
+.totals td:last-child { text-align: right; }
+.totals tr.grand td { font-weight: 700; font-size: 1.15rem; border-top: 2px solid var(--text); }
+#saved-list { list-style: none; margin: 0; padding: 0; }
+#saved-list li { display: flex; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+#saved-list .meta { flex: 1; min-width: 180px; }
+.note { color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.25rem; }
+  .items thead { display: none; }
+  .items, .items tbody { display: block; }
+  .items tr { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .items td { display: block; padding: 0; }
+  .items td:nth-child(1) { grid-column: 1 / -1; }
+  .items td input[style] { width: 100% !important; }
+  .items .amount { padding-top: 8px; }
+  .items td:last-child { text-align: right; }
+}
+
+/* 請求書プレビュー（印刷対象）。印刷時は用紙に合わせて白背景・黒文字に固定する。 */
+#sheet { background: #fff; color: #111; border: 1px solid var(--border); padding: 24px; border-radius: 4px; }
+#sheet h3 { text-align: center; font-size: 1.5rem; letter-spacing: 0.5em; margin: 0 0 16px; }
+#sheet .head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+#sheet .client { font-size: 1.15rem; border-bottom: 1px solid #111; padding-bottom: 2px; min-width: 240px; }
+#sheet .issuer { white-space: pre-wrap; font-size: 0.9rem; }
+#sheet table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+#sheet th, #sheet td { border: 1px solid #888; padding: 4px 6px; }
+#sheet th { background: #eef1f6; }
+#sheet td.num { text-align: right; white-space: nowrap; }
+#sheet .total-line { font-size: 1.2rem; font-weight: 700; margin: 8px 0; }
+#sheet .pre { white-space: pre-wrap; font-size: 0.9rem; }
+
+@media print {
+  body { background: #fff; }
+  #app > :not(#sheet-wrap) { display: none !important; }
+  #sheet-wrap { margin: 0; padding: 0; border: none; }
+  #sheet-wrap > h2 { display: none; }
+  #sheet { border: none; padding: 0; }
+  @page { size: A4; margin: 15mm; }
+}
+.field.check label { flex: 1; }

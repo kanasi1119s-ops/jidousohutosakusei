@@ -1,0 +1,12 @@
+{
+  "name": "インボイス請求書ジェネレーター",
+  "short_name": "請求書ジェネレーター",
+  "description": "適格請求書（インボイス）をブラウザだけで作成する、登録不要・オフライン対応のツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#2b4c7e",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
