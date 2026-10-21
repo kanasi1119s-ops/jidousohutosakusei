@@ -16,4 +16,4 @@
 ## Round 3（観点: クリーン環境・回帰）
 | # | 問題 | 再現手順 | 重大度 | 対応 | 修正コミット | 再検証結果 |
 |---|---|---|---|---|---|---|
-| - | 下記「Round 3 実施結果」参照 | | | | | |
+| 6 | 問題なし。新規clone→`npm ci`→check→test→build→E2E(32件)が README 手順どおり成功。dist を簡易HTTPサーバー(python http.server)で配信し index.html・manifest が200で返ることを確認。Round1〜2の修正による回帰なし | - | - | - | - | 成功 |
