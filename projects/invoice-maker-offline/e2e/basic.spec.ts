@@ -72,7 +72,7 @@ test('CSVエクスポートがBOM付きUTF-8で、ファイル名は英数字の
   const text = buf.toString('utf-8')
   expect(text).toContain('品名,数量,単価(円)')
   expect(text).toContain('ロゴ制作')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(String.fromCharCode(0xfffd))
 })
 
 test('保存→再読み込みで下書きと保存済み書類が復元される', async ({ page }) => {
