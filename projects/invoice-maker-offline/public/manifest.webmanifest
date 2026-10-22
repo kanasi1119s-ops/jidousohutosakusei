@@ -1,0 +1,14 @@
+{
+  "name": "請求書メーカー（オフライン対応）",
+  "short_name": "請求書メーカー",
+  "description": "適格請求書の記載要件チェック付き。登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#1d4e89",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
