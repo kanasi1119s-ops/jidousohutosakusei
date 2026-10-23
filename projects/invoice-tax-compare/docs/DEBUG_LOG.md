@@ -16,3 +16,9 @@
 
 ## Round 3（観点: クリーン環境・回帰）
 Round 3 の結果は下記に追記（コミット後の新規 clone で実施）。
+
+| # | 問題 | 再現手順 | 重大度 | 対応 | 修正コミット | 再検証結果 |
+|---|---|---|---|---|---|---|
+| - | 検出なし | 新規 clone → `npm ci` → check → test → build → E2E | - | - | - | ユニット24件・E2E28件すべて成功。`dist/` を簡易HTTPサーバーで配信し index.html / sw.js の取得と `<meta charset="utf-8">` を確認 |
+
+備考: 簡易HTTPサーバー(python)は Content-Type に charset を付けないが、HTML内の `<meta charset="utf-8">` で解釈される。本番ホスティングでは `text/html; charset=utf-8` を推奨（RELEASE.md の確認事項）。

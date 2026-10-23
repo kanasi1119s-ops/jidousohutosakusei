@@ -51,7 +51,7 @@ test('CSVエクスポートがBOM付きUTF-8で日本語ヘッダーを含む', 
   expect(buf[1]).toBe(0xbb)
   expect(buf[2]).toBe(0xbf)
   expect(buf.toString('utf-8')).toContain('方式')
-  expect(buf.toString('utf-8')).not.toContain('�')
+  expect(buf.toString('utf-8')).not.toContain('\uFFFD')
 })
 
 test('設定のエクスポート/インポートを往復できる', async ({ page }) => {
