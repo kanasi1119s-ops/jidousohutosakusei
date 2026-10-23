@@ -1,0 +1,14 @@
+{
+  "name": "インボイス特例 納税額比較",
+  "short_name": "特例比較",
+  "description": "2割特例・3割特例・簡易課税・本則課税の消費税納税額を比べる、登録不要・オフライン対応のブラウザ完結ツール（個人事業者向け）",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f9",
+  "theme_color": "#2b5aa8",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

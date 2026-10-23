@@ -1,0 +1,22 @@
+{
+  "name": "invoice-tax-compare",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "インボイス特例（2割・3割・簡易・本則）の消費税納税額比較（個人事業者向け、ブラウザ完結・登録不要・オフライン対応）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}

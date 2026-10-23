@@ -1,0 +1,213 @@
+:root {
+  color-scheme: light dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN',
+    'Noto Sans JP',
+    'Yu Gothic UI',
+    Meiryo,
+    sans-serif;
+  background: #f5f6f9;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.hidden {
+  display: none;
+}
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+.subtitle {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+.privacy-badge {
+  display: inline-block;
+  background: #e8eef8;
+  color: #2b5aa8;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin: 4px 4px 12px 0;
+}
+form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.field {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+input[type='number'] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #2b5aa8;
+  background: #2b5aa8;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+button.secondary {
+  background: #fff;
+  color: #2b5aa8;
+}
+.errors {
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+.summary {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid #eee;
+}
+.status-over {
+  color: #b3261e;
+  font-weight: 600;
+}
+.status-under {
+  color: #2b5aa8;
+  font-weight: 600;
+}
+.disclaimer {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 16px;
+  border-top: 1px dashed #ccc;
+  padding-top: 12px;
+}
+footer {
+  margin-top: 24px;
+  font-size: 0.78rem;
+  color: #888;
+  text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #14161a;
+    color: #eee;
+  }
+  form,
+  .summary {
+    background: #1e2126;
+    box-shadow: none;
+  }
+  input[type='number'] {
+    background: #14161a;
+    border-color: #444;
+    color: #eee;
+  }
+  th,
+  td {
+    border-color: #333;
+  }
+  .disclaimer,
+  footer {
+    color: #999;
+  }
+}
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+}
+legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 6px;
+}
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.check input {
+  width: auto;
+}
+.best td {
+  background: #e8eef8;
+  font-weight: 600;
+}
+.ng {
+  color: #777;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+.note {
+  font-size: 0.85rem;
+  color: #555;
+}
+@media (prefers-color-scheme: dark) {
+  select {
+    background: #14161a;
+    border-color: #444;
+    color: #eee;
+  }
+  fieldset {
+    border-color: #333;
+  }
+  .best td {
+    background: #1f2a3f;
+  }
+  .note {
+    color: #aaa;
+  }
+}
