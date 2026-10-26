@@ -1,0 +1,14 @@
+{
+  "name": "消費税 納税額シミュレーター",
+  "short_name": "消費税シミュレーター",
+  "description": "2割特例終了後の3割特例・簡易課税・原則課税の納税額を比較する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#2b4f8a",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
