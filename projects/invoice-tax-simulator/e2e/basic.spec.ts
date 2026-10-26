@@ -43,7 +43,7 @@ test('CSVエクスポートがBOM付きUTF-8で日本語ヘッダーを含む', 
   const text = buf.toString('utf-8')
   expect(text).toContain('納付税額(円)')
   expect(text).toContain('原則課税（本則課税）')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('設定のエクスポート/インポートを往復できる', async ({ page }) => {
