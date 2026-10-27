@@ -21,7 +21,7 @@ describe('storage', () => {
     expect(back.draft.items[0].name).toBe('品名ＡＢＣ')
   })
   it('BOM付きJSONも読める', async () => {
-    const text = '﻿' + (await blobText(dataToJsonBlob(emptyAppData())))
+    const text = '\uFEFF' + (await blobText(dataToJsonBlob(emptyAppData())))
     expect(() => parseDataFromJsonText(text)).not.toThrow()
   })
   it('不正な形式は日本語のエラーで拒否する', () => {

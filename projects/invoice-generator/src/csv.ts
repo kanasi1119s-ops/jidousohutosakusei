@@ -1,7 +1,7 @@
 import { calcInvoice } from './calc'
 import type { Invoice } from './types'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 /** Excel での数式実行（CSVインジェクション）を避けるため、文字列が = + - @ で始まる場合は先頭に ' を付ける。 */
 function escapeCsvText(value: string): string {
