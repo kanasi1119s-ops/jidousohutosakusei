@@ -1,0 +1,76 @@
+:root {
+  --bg: #f4f6fa;
+  --fg: #1d2433;
+  --muted: #5b6577;
+  --card: #ffffff;
+  --accent: #24508f;
+  --accent-fg: #ffffff;
+  --border: #cfd6e4;
+  --error: #b3261e;
+  --warn: #8a5a00;
+  --ok: #1b6b3a;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.6; }
+#app { max-width: 1280px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+h3 { font-size: 1rem; margin: 0 0 4px; }
+.lead, .hint { color: var(--muted); margin: 0 0 16px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 960px) { .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; min-width: 0; }
+input, select, textarea { font: inherit; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--fg); width: 100%; min-width: 0; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .button:focus-within { outline: 3px solid #7aa7ec; outline-offset: 1px; }
+.item-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; align-items: end; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+.item-row .item-name { grid-column: 1 / -1; }
+.check { flex-direction: row; align-items: center; gap: 8px; margin: 12px 0; }
+.check input { width: auto; }
+button, .button { font: inherit; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg); cursor: pointer; display: inline-flex; align-items: center; }
+button.secondary, .button.secondary { background: #fff; color: var(--accent); }
+button.small { padding: 4px 10px; font-size: 0.85rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.error { color: var(--error); margin: 4px 0; }
+.warn { color: var(--warn); margin: 4px 0; }
+.ok { color: var(--ok); }
+.ng { color: var(--error); }
+.ok-title { color: var(--ok); font-weight: 600; }
+.ng-title { color: var(--error); font-weight: 600; }
+#checklist ul { list-style: none; padding: 0; margin: 4px 0 0; }
+#status { margin: 0 0 8px; color: var(--muted); min-height: 1.5em; }
+.saved { list-style: none; padding: 0; margin: 0; }
+.saved li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.saved li span { flex: 1 1 240px; overflow-wrap: anywhere; }
+footer { color: var(--muted); font-size: 0.85rem; padding: 8px 0 24px; }
+.invoice { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px; overflow-wrap: anywhere; }
+.invoice-title { text-align: center; font-size: 1.4rem; margin: 0 0 16px; letter-spacing: 0.2em; }
+.invoice-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.invoice-head p { margin: 2px 0; }
+.client-name { font-size: 1.2rem; font-weight: 600; border-bottom: 1px solid var(--fg); padding-bottom: 2px; }
+.invoice-total-line { font-weight: 600; margin-top: 8px !important; }
+.meta { text-align: right; font-size: 0.9rem; }
+.issuer-name { font-weight: 600; margin-top: 8px !important; }
+.invoice table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 0.9rem; }
+.invoice th, .invoice td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; }
+.invoice th { background: #eef2f9; }
+.invoice .num { text-align: right; white-space: nowrap; }
+.invoice .summary { width: 70%; margin-left: auto; }
+.invoice .summary .total td { font-weight: 700; background: #eef2f9; }
+.note-small { font-size: 0.8rem; color: var(--muted); }
+.block { margin-top: 12px; font-size: 0.9rem; }
+.pre { white-space: pre-wrap; margin: 0; }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; }
+  #app { padding: 0; max-width: none; }
+  .no-print { display: none !important; }
+  .layout { display: block; }
+  .invoice { border: none; padding: 0; border-radius: 0; }
+}

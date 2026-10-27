@@ -1,0 +1,14 @@
+{
+  "name": "適格請求書ジェネレーター",
+  "short_name": "請求書",
+  "description": "登録不要・オフライン対応の請求書作成ツール。入力データはブラウザ内のみに保存されます。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#24508f",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
