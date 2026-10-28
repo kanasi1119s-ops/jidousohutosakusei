@@ -8,3 +8,4 @@
 | 日付 | プロジェクト名 | サイト形態 | パス | スコア | 状態 |
 |---|---|---|---|---|---|
 | 2026-09-23 | income-wall-simulator（年収の壁シミュレーター） | W1 | `projects/income-wall-simulator` | 21/25 | MVP完成 |
+| 2026-10-28 | consumption-tax-special-simulator（消費税 特例比較シミュレーター） | W1 | `projects/consumption-tax-special-simulator` | 21/25 | MVP完成（制度の一次確認待ち） |

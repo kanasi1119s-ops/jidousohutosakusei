@@ -1,0 +1,23 @@
+{
+  "name": "consumption-tax-special-simulator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "インボイス登録した個人事業者向け 消費税の特例（2割・3割・簡易課税・本則）比較シミュレーター（ブラウザ完結・登録不要・オフライン対応）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "verify": "npm run check && npm test && npm run build && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}
