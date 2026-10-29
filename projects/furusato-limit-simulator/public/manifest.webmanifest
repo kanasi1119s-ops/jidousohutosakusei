@@ -1,0 +1,14 @@
+{
+  "name": "ふるさと納税 控除上限額シミュレーター",
+  "short_name": "ふるさと上限額",
+  "description": "年収と家族構成からふるさと納税の控除上限額の目安を試算する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#b5483a",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
