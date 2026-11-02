@@ -1,0 +1,12 @@
+{
+  "name": "ふるさと納税 上限＆記録ノート",
+  "short_name": "ふるさと記録",
+  "description": "ふるさと納税の控除上限額を試算し寄附を記録する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#1f6f5c",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
