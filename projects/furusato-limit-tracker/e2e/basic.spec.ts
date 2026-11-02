@@ -18,7 +18,7 @@ test('日本語の見出し・ボタン文言が正しく表示される', async
   await expect(page.getByText('登録不要').first()).toBeVisible()
   await expect(page.getByRole('button', { name: '上限額を試算する' })).toBeVisible()
   await expect(page.getByRole('button', { name: '寄附を追加' })).toBeVisible()
-  expect(await page.content()).not.toContain('�')
+  expect(await page.content()).not.toContain('\uFFFD')
 })
 
 test('上限額が表示される', async ({ page }) => {
@@ -75,7 +75,7 @@ test('CSVがBOM付きUTF-8で日本語を含み、英数字のファイル名', 
   const text = buf.toString('utf-8')
   expect(text).toContain('自治体名')
   expect(text).toContain('日本語の町')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('CSVとJSONのエクスポート→インポート往復', async ({ page }) => {
