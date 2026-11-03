@@ -1,0 +1,42 @@
+:root { --bg:#f5f7fb; --fg:#1c2433; --accent:#2a4f9e; --line:#d3dae8; --warn:#9a3b00; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); line-height:1.6;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif; }
+header, main, footer { max-width: 1100px; margin: 0 auto; padding: 12px 16px; }
+h1 { font-size: 1.4rem; margin: 8px 0 0; color: var(--accent); }
+.lead { margin: 2px 0 8px; font-size: .9rem; }
+.layout { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+fieldset { border:1px solid var(--line); background:#fff; border-radius:8px; margin:0 0 12px; padding:10px 12px; }
+legend { font-weight:700; color:var(--accent); padding:0 4px; }
+label { display:block; font-size:.85rem; margin:6px 0; }
+input, select, textarea { width:100%; font:inherit; padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:#fff; color:inherit; }
+textarea { min-height: 56px; }
+.row { display:grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.item { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap:6px; align-items:end; margin-bottom:6px; }
+@media (max-width: 600px) { .item { grid-template-columns: 1fr 1fr; } .item .name { grid-column: 1 / -1; } }
+button { font:inherit; padding:8px 12px; border:1px solid var(--accent); background:#fff; color:var(--accent); border-radius:6px; cursor:pointer; }
+button.primary { background:var(--accent); color:#fff; }
+.actions { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0; }
+.issues { background:#fff4ec; border:1px solid #f0c8a8; color:var(--warn); border-radius:8px; padding:8px 12px; margin-bottom:12px; font-size:.85rem; }
+.issues:empty { display:none; }
+.disclaimer { font-size:.8rem; color:#4a5568; }
+ul.saved { list-style:none; padding:0; margin:0; }
+ul.saved li { display:flex; gap:6px; align-items:center; justify-content:space-between; padding:4px 0; border-bottom:1px solid var(--line); font-size:.85rem; }
+/* 請求書プレビュー */
+.paper { background:#fff; border:1px solid var(--line); padding:20px; font-size:.85rem; min-height: 420px; }
+.paper h2 { text-align:center; letter-spacing:.4em; margin:0 0 12px; font-size:1.3rem; }
+.paper .meta { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.paper table { width:100%; border-collapse:collapse; margin:12px 0; }
+.paper th, .paper td { border:1px solid var(--line); padding:4px 6px; }
+.paper th { background:#eef2fa; }
+.paper td.r { text-align:right; font-variant-numeric: tabular-nums; }
+.paper .total { font-size:1.1rem; font-weight:700; }
+.paper .pre { white-space:pre-wrap; }
+@media print {
+  body { background:#fff; }
+  header, footer, .edit, .actions, .issues, .saved-box { display:none !important; }
+  main { max-width:none; padding:0; }
+  .layout { display:block; }
+  .paper { border:none; padding:0; }
+}
