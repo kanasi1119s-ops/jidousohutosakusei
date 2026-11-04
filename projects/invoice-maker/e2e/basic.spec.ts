@@ -18,7 +18,7 @@ test('日本語の見出し・ボタンが正しく表示される', async ({ pa
   await expect(page.getByRole('button', { name: 'CSVをダウンロード' })).toBeVisible()
   await expect(page.locator('html')).toHaveAttribute('lang', 'ja')
   const body = await page.locator('body').innerText()
-  expect(body).not.toContain('�')
+  expect(body).not.toContain('\uFFFD')
 })
 
 test('全角入力でも税率ごとに計算され、プレビューに反映される', async ({ page }) => {
@@ -64,7 +64,7 @@ test('CSVはBOM付きUTF-8で、ファイル名は英数字のみ', async ({ pag
   expect([...buf.subarray(0, 3)]).toEqual([0xef, 0xbb, 0xbf])
   const text = buf.toString('utf-8')
   expect(text).toContain('ロゴデザイン制作')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('リロード後も入力が復元される', async ({ page }) => {

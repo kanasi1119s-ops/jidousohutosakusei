@@ -87,7 +87,7 @@ describe('CSV', () => {
     expect(csv).toContain('株式会社テスト')
     expect(csv).toContain(`"'=HYPERLINK(""x"")"`)
     expect(stripBom(csv).charCodeAt(0)).not.toBe(0xfeff)
-    expect(csv).not.toContain('�')
+    expect(csv).not.toContain('\uFFFD')
   })
   it('カンマ・改行・引用符をエスケープする', () => {
     expect(escapeCsvField('a,b')).toBe('"a,b"')
@@ -109,7 +109,7 @@ describe('JSONインポート', () => {
     expect(back.invoices).toHaveLength(1)
   })
   it('BOM付きでも読める', () => {
-    expect(() => parseDataFromJsonText('﻿' + JSON.stringify(emptyData()))).not.toThrow()
+    expect(() => parseDataFromJsonText('\uFEFF' + JSON.stringify(emptyData()))).not.toThrow()
   })
   it('不正な形式・不正な値は拒否またはサニタイズ', () => {
     expect(() => parseDataFromJsonText('not json')).toThrow()

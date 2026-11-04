@@ -1,7 +1,7 @@
 import { calcTotals } from './calc'
 import type { Invoice } from './model'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 export function escapeCsvField(value: string): string {
   // 表計算ソフトでの数式インジェクションを避けるため、先頭が = + - @ の文字列には ' を付ける
