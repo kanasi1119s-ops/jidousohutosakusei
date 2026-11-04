@@ -1,0 +1,14 @@
+{
+  "name": "インボイス対応 請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "登録不要・オフライン対応。入力データがブラウザから出ない、インボイス対応の請求書作成ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#2b5fa6",
+  "lang": "ja",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,98 @@
+:root {
+  --bg: #f4f6fa;
+  --fg: #1d2433;
+  --muted: #5b6577;
+  --card: #ffffff;
+  --border: #d5dbe6;
+  --accent: #2b5fa6;
+  --accent-fg: #ffffff;
+  --danger: #b3261e;
+  --warn-bg: #fff4d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141922;
+    --fg: #e6e9f0;
+    --muted: #9aa5b8;
+    --card: #1d2430;
+    --border: #364054;
+    --accent: #6a9be0;
+    --accent-fg: #0b1220;
+    --danger: #ff8a80;
+    --warn-bg: #3a3320;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  line-height: 1.6;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 8px 0 4px; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.lead { color: var(--muted); margin: 0 0 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+label { display: block; font-size: 0.85rem; color: var(--muted); }
+input, select, textarea {
+  width: 100%; font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 6px; padding: 8px; margin-top: 2px;
+}
+textarea { min-height: 70px; resize: vertical; }
+button {
+  font: inherit; cursor: pointer; border-radius: 6px; padding: 8px 14px;
+  border: 1px solid var(--accent); background: var(--card); color: var(--accent);
+}
+button.primary { background: var(--accent); color: var(--accent-fg); }
+button.danger { border-color: var(--danger); color: var(--danger); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+.items { width: 100%; border-collapse: collapse; }
+.items th { text-align: left; font-size: 0.8rem; color: var(--muted); padding: 4px; }
+.items td { padding: 4px; vertical-align: top; }
+.items .num { width: 110px; }
+.items .rate { width: 110px; }
+.items .amt { text-align: right; white-space: nowrap; padding-top: 12px; }
+.notice { background: var(--warn-bg); border-radius: 6px; padding: 8px 12px; font-size: 0.85rem; margin: 8px 0; }
+.status { min-height: 1.5em; font-size: 0.9rem; color: var(--accent); }
+.error { color: var(--danger); font-size: 0.85rem; }
+.saved-list { list-style: none; padding: 0; margin: 0; }
+.saved-list li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.saved-list .meta { flex: 1 1 200px; }
+footer { color: var(--muted); font-size: 0.8rem; padding: 16px 0 32px; }
+
+/* 請求書プレビュー（画面でも印刷でも同じ見た目：白地・黒文字） */
+.paper {
+  background: #fff; color: #111; border: 1px solid var(--border); border-radius: 4px;
+  padding: 28px; max-width: 794px; margin: 0 auto; font-size: 13px;
+}
+.paper h3 { text-align: center; font-size: 22px; letter-spacing: 0.6em; margin: 0 0 16px; }
+.paper .head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.paper .client { font-size: 16px; border-bottom: 1px solid #111; padding-bottom: 2px; display: inline-block; min-width: 220px; }
+.paper .pre { white-space: pre-wrap; word-break: break-word; }
+.paper .total-box { margin: 16px 0; border: 2px solid #111; padding: 8px 12px; display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; }
+.paper table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.paper th, .paper td { border: 1px solid #888; padding: 4px 6px; }
+.paper th { background: #eee; }
+.paper td.r { text-align: right; white-space: nowrap; }
+.paper .sum { margin-left: auto; width: min(360px, 100%); }
+.paper .small { font-size: 11px; color: #444; }
+
+@media (max-width: 600px) {
+  .items thead { display: none; }
+  .items tr { display: block; border-bottom: 1px solid var(--border); padding: 8px 0; }
+  .items td { display: block; width: 100%; }
+  .items .num, .items .rate { width: 100%; }
+  .items .amt { text-align: left; padding-top: 4px; }
+  .paper { padding: 12px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .wrap { padding: 0; max-width: none; }
+  .paper { border: none; padding: 0; max-width: none; }
+}
