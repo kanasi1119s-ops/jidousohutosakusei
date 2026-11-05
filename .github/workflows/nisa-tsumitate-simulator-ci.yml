@@ -1,0 +1,32 @@
+name: nisa-tsumitate-simulator CI
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'projects/nisa-tsumitate-simulator/**'
+      - '.github/workflows/nisa-tsumitate-simulator-ci.yml'
+  pull_request:
+    paths:
+      - 'projects/nisa-tsumitate-simulator/**'
+
+defaults:
+  run:
+    working-directory: projects/nisa-tsumitate-simulator
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: projects/nisa-tsumitate-simulator/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - run: npm run build

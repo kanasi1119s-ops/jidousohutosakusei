@@ -1,0 +1,26 @@
+:root { color-scheme: light; --fg:#1d2420; --bg:#f6f7f5; --accent:#1f6f5c; --line:#d5dbd7; --warn:#a33a2a; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); line-height:1.6;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif; }
+#app { max-width: 880px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: .5rem 0; }
+.subtitle { color:#4a5650; margin-top:0; }
+.privacy-badge { display:inline-block; background:#e2efe9; color:var(--accent); border-radius:999px; padding:2px 10px; margin:2px 4px 2px 0; font-size:.8rem; }
+form { background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px; margin:16px 0; }
+.field { margin-bottom:12px; }
+label { display:block; font-weight:600; margin-bottom:4px; font-size:.9rem; }
+input[type=text], input[type=number] { width:100%; padding:8px; font-size:1rem; border:1px solid var(--line); border-radius:6px; }
+.actions { display:flex; flex-wrap:wrap; gap:8px; }
+button { padding:8px 14px; font-size:.95rem; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+button.secondary { background:#fff; color:var(--accent); }
+.errors { color:var(--warn); white-space:pre-line; margin-bottom:8px; }
+.hidden { display:none; }
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap:8px; margin:12px 0; }
+.card { background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px; }
+.card .v { font-size:1.25rem; font-weight:700; }
+.notice { background:#fff7e0; border:1px solid #e6d28a; border-radius:6px; padding:8px 12px; margin:8px 0; }
+.table-wrap { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; background:#fff; font-size:.9rem; }
+th, td { border:1px solid var(--line); padding:6px 8px; text-align:right; }
+th:first-child, td:first-child { text-align:left; }
+.disclaimer { font-size:.85rem; color:#4a5650; border-top:1px solid var(--line); margin-top:24px; padding-top:12px; }
