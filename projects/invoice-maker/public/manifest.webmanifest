@@ -1,0 +1,12 @@
+{
+  "name": "請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "インボイス対応の請求書を作成してPDF保存・印刷できる、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#2b4c7e",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
