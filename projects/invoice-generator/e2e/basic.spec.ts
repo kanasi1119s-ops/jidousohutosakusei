@@ -73,7 +73,7 @@ test('CSVエクスポートがBOM付きUTF-8で日本語ヘッダーを含む', 
   const text = buf.toString('utf-8')
   expect(text).toContain('請求書番号')
   expect(text).toContain('株式会社サンプル')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(String.fromCharCode(0xfffd))
 })
 
 test('JSONバックアップの書き出し→全削除→読み込みで復元できる', async ({ page }) => {

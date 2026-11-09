@@ -14,4 +14,6 @@
 確認OK: XSS文字列、不正数値、巨大金額、壊れたJSON、オフライン再読み込み、外部通信ゼロ、CSVのBOM、日本語表示。
 
 ## Round 3（観点: クリーン環境・回帰）
-Round 3 の結果は下記「Round 3 結果」を参照。
+| # | 問題 | 再現手順 | 重大度 | 対応 | 修正コミット | 再検証結果 |
+|---|---|---|---|---|---|---|
+| - | 検出なし | 新規cloneで README どおり `npm ci`→check→test→build→E2E、dist を python http.server で配信 | - | - | - | ユニット28・E2E32全成功、HTTP 200、audit 0件 |
