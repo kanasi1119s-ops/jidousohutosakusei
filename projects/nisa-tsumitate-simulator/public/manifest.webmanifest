@@ -1,0 +1,12 @@
+{
+  "name": "NISA積立シミュレーター",
+  "short_name": "NISA積立",
+  "description": "毎月の積立額・想定利回り・期間から資産額と非課税枠の使用状況を試算する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#1f4f8f",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
