@@ -1,0 +1,31 @@
+# 有効化は人間が行うこと。使う場合は .github/workflows/ へ移動し、リポジトリ設定でPagesを有効化する。
+name: Deploy invoice-generator to GitHub Pages
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/invoice-generator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: projects/invoice-generator/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
