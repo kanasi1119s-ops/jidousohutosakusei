@@ -1,0 +1,12 @@
+{
+  "name": "ふるさと納税 上限額シミュレーター",
+  "short_name": "ふるさと上限額",
+  "description": "ふるさと納税の控除上限額の目安と寄附の残り枠を管理する、登録不要・オフライン対応のブラウザ完結ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6f3",
+  "theme_color": "#b4472f",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
