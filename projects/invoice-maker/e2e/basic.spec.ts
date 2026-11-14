@@ -16,7 +16,7 @@ test('日本語の見出し・ボタン文言が正しく表示される', async
   await expect(page.getByRole('button', { name: '印刷 / PDFとして保存' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'CSV出力（Excel対応）' })).toBeVisible()
   const text = await page.locator('body').innerText()
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('明細入力で税込合計がプレビューに反映（全角数字も可）', async ({ page }) => {
@@ -61,7 +61,7 @@ test('CSVはBOM付きUTF-8で日本語が保持される', async ({ page }) => {
   const body = buf.toString('utf-8')
   expect(body).toContain('品名,数量')
   expect(body).toContain('開発費')
-  expect(body).not.toContain('�')
+  expect(body).not.toContain('\uFFFD')
 })
 
 test('JSONバックアップ→新規→復元の往復', async ({ page }) => {

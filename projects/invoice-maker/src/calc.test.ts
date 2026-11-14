@@ -95,7 +95,7 @@ describe('CSV', () => {
     expect(csv).toContain('"デザイン費, 一式"')
     expect(csv).toContain(`"'=HYPERLINK(""x"")"`)
     expect(csv).toContain('合計(税込)')
-    expect(csv).not.toContain('�')
+    expect(csv).not.toContain('\uFFFD')
   })
   it('ファイル名は英数字のみ', () => {
     expect(safeFileName('請求書-２０２６', 'csv', '2026-11-14')).toBe('2026-2026-11-14.csv')
