@@ -2,7 +2,7 @@ import { computeInvoice } from './calc'
 import type { Rounding } from './calc'
 import type { Invoice } from './model'
 
-const UTF8_BOM = '﻿'
+const UTF8_BOM = '\uFEFF'
 
 /** CSVインジェクション対策: 先頭が = + - @ タブ CR の場合は ' を前置する（数値の負数は除く） */
 export function neutralizeFormula(value: string): string {

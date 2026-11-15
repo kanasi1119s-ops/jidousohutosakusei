@@ -15,7 +15,7 @@ test('日本語の見出し・ボタン文言が正しく表示される', async
   await expect(page.locator('#tabbtn-settings')).toHaveText('設定')
   await expect(page.locator('footer')).toContainText('税務・法律上の助言ではありません')
   const bodyText = await page.locator('body').innerText()
-  expect(bodyText).not.toContain('�')
+  expect(bodyText).not.toContain('\uFFFD')
 })
 
 test('明細を入力すると税率別の合計が計算される', async ({ page }) => {
@@ -97,5 +97,5 @@ test('CSVはBOM付きUTF-8で、日本語がそのまま入っている', async 
   const text = buf.toString('utf8')
   expect(text).toContain('請求書番号')
   expect(text).toContain('株式会社テスト商事御中')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })

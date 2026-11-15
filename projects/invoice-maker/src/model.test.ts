@@ -29,7 +29,7 @@ describe('バックアップ', () => {
     inv.clientName = '株式会社テスト商事'
     inv.items = [{ name: '制作費（デザイン）', qty: 1.5, unitPrice: 12345, taxRate: 8 }]
     const data = { settings: { ...defaultSettings(), issuerName: '山田 太郎' }, invoices: [inv] }
-    const back = parseBackupText('﻿' + buildBackupJson(data))
+    const back = parseBackupText('\uFEFF' + buildBackupJson(data))
     expect(back.invoices[0]).toEqual(inv)
     expect(back.settings.issuerName).toBe('山田 太郎')
   })

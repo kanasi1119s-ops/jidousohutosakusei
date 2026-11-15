@@ -196,7 +196,7 @@ export function buildBackupBlob(data: AppData): Blob {
 }
 
 export function parseBackupText(text: string): AppData {
-  const clean = text.replace(/^﻿/, '')
+  const clean = text.replace(/^\uFEFF/, '')
   let parsed: unknown
   try {
     parsed = JSON.parse(clean)
