@@ -1,0 +1,71 @@
+:root {
+  --bg: #f7f6f2;
+  --fg: #1d2330;
+  --muted: #5a6275;
+  --card: #ffffff;
+  --line: #d9dce3;
+  --accent: #2b4c7e;
+  --accent-fg: #ffffff;
+  --danger: #b3261e;
+  --warn: #7a5a00;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171f; --fg: #e8eaf0; --muted: #a3a9b8; --card: #1d212c; --line: #323848;
+    --accent: #8fb0e8; --accent-fg: #0d1420; --danger: #ff8a80; --warn: #e6c25c;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.6; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.4rem; margin: 0 0 4px; }
+h2 { font-size: 1.05rem; margin: 0 0 8px; }
+.lead { color: var(--muted); margin: 0 0 16px; font-size: 0.9rem; }
+.layout { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+.layout > * { min-width: 0; }
+@media (min-width: 960px) { .layout { grid-template-columns: minmax(380px, 460px) 1fr; align-items: start; } }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+label { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+input, select, textarea { width: 100%; font: inherit; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; }
+textarea { min-height: 56px; resize: vertical; }
+.row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+.row2 > *, .item .row3 > * { min-width: 0; }
+input[type="date"] { min-width: 0; max-width: 100%; }
+.check { display: flex; gap: 8px; align-items: center; margin-top: 10px; color: var(--fg); }
+.check input { width: auto; }
+button { font: inherit; cursor: pointer; border: 1px solid var(--accent); background: var(--card); color: var(--accent); border-radius: 6px; padding: 7px 12px; }
+button.primary { background: var(--accent); color: var(--accent-fg); }
+button.danger { border-color: var(--danger); color: var(--danger); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.item { border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 8px; }
+.item .row3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+.msg-error { color: var(--danger); margin: 8px 0 0; padding-left: 18px; font-size: 0.9rem; }
+.msg-warn { color: var(--warn); margin: 8px 0 0; padding-left: 18px; font-size: 0.9rem; }
+.status { color: var(--muted); font-size: 0.85rem; min-height: 1.2em; }
+.saved { list-style: none; margin: 0; padding: 0; }
+.saved li { display: flex; gap: 8px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 6px 0; font-size: 0.9rem; }
+.note { font-size: 0.8rem; color: var(--muted); }
+
+/* 請求書プレビュー（画面・印刷共通。印刷時は配色を固定） */
+.sheet { background: #fff; color: #111; border: 1px solid var(--line); border-radius: 4px; padding: 28px; max-width: 794px; font-size: 0.9rem; }
+.sheet h2 { text-align: center; font-size: 1.5rem; letter-spacing: 0.4em; margin: 0 0 16px; }
+.sheet .head { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sheet .to { font-size: 1.15rem; border-bottom: 1px solid #111; padding-bottom: 2px; display: inline-block; min-width: 14em; }
+.sheet .pre { white-space: pre-wrap; margin: 0; }
+.sheet .big { font-size: 1.25rem; border-bottom: 2px solid #111; display: inline-block; margin: 12px 0; padding: 0 8px; }
+.sheet table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.sheet th, .sheet td { border: 1px solid #999; padding: 4px 6px; }
+.sheet th { background: #eee; }
+.sheet td.num { text-align: right; white-space: nowrap; }
+.sheet .sum { width: 60%; margin-left: auto; }
+.sheet .placeholder { color: #777; text-align: center; padding: 40px 0; }
+@media (max-width: 640px) { .sheet { padding: 14px; } .sheet .head { grid-template-columns: 1fr; } .sheet .sum { width: 100%; } .sheet-scroll { overflow-x: auto; } }
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .wrap { padding: 0; max-width: none; }
+  .layout { display: block; }
+  .sheet { border: none; padding: 0; max-width: none; }
+  @page { size: A4; margin: 15mm; }
+}
