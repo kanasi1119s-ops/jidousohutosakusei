@@ -17,3 +17,6 @@
 
 ## Round 3（観点: クリーン環境・回帰）
 下記「Round 3 実施結果」を参照（コミット後に新規cloneで実施）。
+
+### Round 3 実施結果（2026-11-17）
+新規cloneで `npm ci` → `npm run check` → `npm test`（16件）→ `npm run build` → `npm run test:e2e`（28件）すべて成功。ビルド済み `dist/` を `python3 -m http.server` で配信し、`Content-Type: text/html` で配信されることを確認（charset はHTMLの `<meta charset>` で指定）。検出: 高0 / 中0 / 低0。
