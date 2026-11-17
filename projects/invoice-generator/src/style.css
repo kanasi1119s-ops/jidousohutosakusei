@@ -1,0 +1,68 @@
+:root {
+  --fg: #1d2330;
+  --muted: #5b6475;
+  --bg: #f6f7f5;
+  --card: #fff;
+  --accent: #2b4c9b;
+  --border: #d5d9e0;
+  --err: #b3261e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+  line-height: 1.6;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; margin: 8px 0; }
+h2 { font-size: 1.1rem; margin: 0 0 8px; }
+.lead { color: var(--muted); margin: 0 0 12px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+.badges li { background: #e6ecf9; color: var(--accent); border-radius: 12px; padding: 2px 10px; font-size: 0.85rem; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 16px; }
+label { display: block; font-size: 0.85rem; color: var(--muted); }
+input, select, textarea { width: 100%; font: inherit; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--fg); }
+textarea { min-height: 60px; }
+button { font: inherit; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--accent); background: #fff; color: var(--accent); cursor: pointer; }
+button.primary { background: var(--accent); color: #fff; }
+button.danger { border-color: var(--err); color: var(--err); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.items-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--border); padding: 4px 6px; text-align: left; vertical-align: top; }
+th { background: #eef1f7; font-size: 0.85rem; }
+td.num, th.num { text-align: right; }
+.items-table input, .items-table select { min-width: 70px; }
+.items-table td:first-child input { min-width: 160px; }
+#errors { color: var(--err); margin: 8px 0 0; padding-left: 1.2em; }
+#errors:empty { display: none; }
+#status { color: var(--muted); min-height: 1.5em; }
+.disclaimer { font-size: 0.85rem; color: var(--muted); }
+.saved-list { list-style: none; margin: 0; padding: 0; }
+.saved-list li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.saved-list .title { flex: 1 1 200px; }
+
+/* 請求書プレビュー（印刷対象） */
+.doc { background: #fff; border: 1px solid var(--border); padding: 24px; }
+.doc h2 { text-align: center; font-size: 1.4rem; letter-spacing: 0.3em; }
+.doc .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin: 12px 0; }
+.doc .buyer { font-size: 1.15rem; border-bottom: 1px solid var(--fg); display: inline-block; min-width: 14em; }
+.doc .total-line { font-size: 1.3rem; margin: 12px 0; }
+.doc .pre { white-space: pre-wrap; }
+.doc .small { font-size: 0.8rem; color: var(--muted); }
+.reduced { font-size: 0.75rem; }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px; }
+  .doc { padding: 12px; }
+}
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  .doc { border: none; padding: 0; }
+  .card.preview { border: none; padding: 0; margin: 0; }
+}
