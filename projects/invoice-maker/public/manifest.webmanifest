@@ -1,0 +1,12 @@
+{
+  "name": "請求書メーカー",
+  "short_name": "請求書メーカー",
+  "description": "登録不要・オフライン対応のインボイス対応 請求書作成ツール",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#1d4f9c",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
