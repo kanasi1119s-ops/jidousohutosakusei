@@ -20,7 +20,7 @@ test('日本語の見出し・ボタンが正しく表示される', async ({ pa
   await expect(page.getByRole('button', { name: 'PDF保存・印刷' })).toBeVisible()
   await expect(page.getByRole('heading', { name: '請求書', exact: true })).toBeVisible()
   const text = await page.locator('body').innerText()
-  expect(text).not.toContain('�')
+  expect(text).not.toContain(String.fromCharCode(0xfffd))
 })
 
 test('全角入力でも計算され、プレビューに税率別合計が出る', async ({ page }) => {
