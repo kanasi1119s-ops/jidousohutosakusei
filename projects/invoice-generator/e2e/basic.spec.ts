@@ -88,7 +88,7 @@ test('CSVがBOM付きUTF-8・英数字ファイル名で書き出される', asy
   const text = buf.toString('utf-8')
   expect(text).toContain('請求書番号')
   expect(text).toContain('株式会社サンプル')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('バックアップJSONの書き出し→全消去→読み込みで復元できる', async ({ page }) => {
