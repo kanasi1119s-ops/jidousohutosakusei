@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>インボイス対応 請求書メーカー</title>
+    <meta name="description" content="登録不要・オフライン対応の請求書作成ツール。税率ごとの消費税計算、登録番号の記載、PDF保存（印刷）に対応。入力データはブラウザの外へ送信されません。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#1f4e8c" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; manifest-src 'self'; base-uri 'self'; form-action 'self'; connect-src 'self'" />
+  </head>
+  <body>
+    <header class="site-header no-print">
+      <h1>インボイス対応 請求書メーカー</h1>
+      <p class="lead">登録不要・オフラインでも動作。入力した内容はこのブラウザの中にだけ保存され、外部には送信されません。</p>
+    </header>
+    <main>
+      <section class="card no-print" aria-labelledby="h-issuer">
+        <h2 id="h-issuer">1. 発行者情報（自分の情報）</h2>
+        <div class="grid">
+          <label>氏名・名称<input id="issuer-name" autocomplete="off" /></label>
+          <label>登録番号（T＋数字13桁）<input id="issuer-regno" placeholder="T1234567890123" autocomplete="off" /></label>
+          <label>住所<input id="issuer-address" autocomplete="off" /></label>
+          <label>電話番号<input id="issuer-tel" autocomplete="off" /></label>
+          <label class="wide">振込先<textarea id="issuer-bank" rows="2"></textarea></label>
+        </div>
+        <p id="issuer-msg" class="msg" role="status"></p>
+      </section>
+
+      <section class="card no-print" aria-labelledby="h-list">
+        <h2 id="h-list">2. 請求書一覧</h2>
+        <div class="toolbar">
+          <button id="btn-new" type="button" class="primary">新しい請求書を作る</button>
+          <button id="btn-csv" type="button">一覧をCSVで保存</button>
+          <button id="btn-backup" type="button">バックアップ(JSON)を保存</button>
+          <label class="file-btn">バックアップを読み込む<input id="file-import" type="file" accept="application/json,.json" /></label>
+        </div>
+        <p id="list-msg" class="msg" role="status"></p>
+        <div class="table-wrap">
+          <table id="list-table">
+            <thead><tr><th>請求書番号</th><th>発行日</th><th>宛先</th><th class="num">合計(税込)</th><th>操作</th></tr></thead>
+            <tbody id="list-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="editor" class="card no-print" aria-labelledby="h-edit" hidden>
+        <h2 id="h-edit">3. 請求書の編集</h2>
+        <div class="grid">
+          <label>請求書番号<input id="inv-number" autocomplete="off" /></label>
+          <label>宛先（会社名・氏名）<input id="inv-customer" autocomplete="off" /></label>
+          <label>発行日<input id="inv-issue" type="date" /></label>
+          <label>支払期限<input id="inv-due" type="date" /></label>
+          <label>価格の入力方法
+            <select id="inv-taxmode"><option value="exclusive">税抜価格で入力</option><option value="inclusive">税込価格で入力</option></select>
+          </label>
+          <label>消費税の端数処理（税率ごとに1回）
+            <select id="inv-rounding"><option value="floor">切り捨て</option><option value="round">四捨五入</option><option value="ceil">切り上げ</option></select>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table id="items-table">
+            <thead><tr><th>品名</th><th>数量</th><th>単価(円)</th><th>税率</th><th class="num">金額(円)</th><th></th></tr></thead>
+            <tbody id="items-body"></tbody>
+          </table>
+        </div>
+        <button id="btn-add-item" type="button">明細行を追加</button>
+        <label class="wide block">備考<textarea id="inv-note" rows="2"></textarea></label>
+        <div id="totals" class="totals" aria-live="polite"></div>
+        <p id="edit-errors" class="msg error" role="alert"></p>
+        <div class="toolbar">
+          <button id="btn-save" type="button" class="primary">保存する</button>
+          <button id="btn-print" type="button">印刷／PDFとして保存</button>
+          <button id="btn-close" type="button">閉じる</button>
+        </div>
+        <p class="note">PDF保存は、印刷画面の送信先で「PDFに保存」を選んでください。</p>
+      </section>
+
+      <section id="sheet-wrap" aria-label="請求書プレビュー" hidden>
+        <p id="sheet-warn" class="msg error no-print"></p>
+        <article id="sheet" class="sheet"></article>
+      </section>
+    </main>
+    <footer class="site-footer no-print">
+      <p>本ツールは請求書作成を補助するものであり、税務・法律上の助言ではありません。適格請求書の要件や税率は国税庁の最新情報をご確認ください。登録番号の実在確認は国税庁の公表サイトで行ってください。</p>
+      <p>データの保存先はこのブラウザ(localStorage)です。ブラウザのデータを消去すると失われるため、定期的にバックアップ(JSON)を保存してください。</p>
+    </footer>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
