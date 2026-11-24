@@ -1,0 +1,11 @@
+{
+  "name": "インボイス請求書ジェネレーター",
+  "short_name": "請求書作成",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#1f4f8f",
+  "lang": "ja",
+  "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
