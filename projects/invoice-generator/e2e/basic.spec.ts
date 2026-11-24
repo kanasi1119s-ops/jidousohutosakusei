@@ -71,7 +71,7 @@ test('CSVはBOM付きUTF-8で英数字のファイル名', async ({ page }) => {
   expect([...buf.subarray(0, 3)]).toEqual([0xef, 0xbb, 0xbf])
   const text = buf.toString('utf8')
   expect(text).toContain('株式会社テスト商事')
-  expect(text).not.toContain('�')
+  expect(text).not.toContain('\uFFFD')
 })
 
 test('バックアップのエクスポート→全消去→インポートで往復できる', async ({ page }) => {

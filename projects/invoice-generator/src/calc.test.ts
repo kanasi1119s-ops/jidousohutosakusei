@@ -64,7 +64,7 @@ describe('CSV', () => {
     expect(csv.charCodeAt(0)).toBe(0xfeff)
     expect(csv).toContain('株式会社テスト')
     expect(csv).toContain('"デザイン費, 一式"')
-    expect(csv).not.toContain('�')
+    expect(csv).not.toContain('\uFFFD')
   })
   it('数式インジェクションを無効化', () => {
     expect(escapeCsvField('=SUM(A1)')).toBe("'=SUM(A1)")
