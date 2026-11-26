@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>請求書メーカー（インボイス対応）</title>
+    <meta name="description" content="適格請求書（インボイス）の記載事項に沿った請求書を作る、登録不要・オフライン対応のブラウザ完結ツールです。入力データは外部送信されません。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#1f4e8c" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; manifest-src 'self'; base-uri 'self'; form-action 'self'; connect-src 'self'"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="no-print">
+        <h1>請求書メーカー</h1>
+        <p class="lead">適格請求書（インボイス）の記載事項に沿った請求書を作成します。<strong>登録不要・オフライン対応</strong>。入力内容はこのブラウザの外に送信されません。</p>
+      </header>
+
+      <main class="no-print">
+        <section class="card">
+          <h2>発行者（あなた）</h2>
+          <label>氏名・名称<input id="issuerName" type="text" autocomplete="off" /></label>
+          <label>住所<input id="issuerAddress" type="text" autocomplete="off" /></label>
+          <label>登録番号（T + 数字13桁。未登録なら空欄）<input id="registrationNumber" type="text" autocomplete="off" placeholder="T1234567890123" /></label>
+          <p id="reg-error" class="error" role="alert"></p>
+        </section>
+
+        <section class="card">
+          <h2>請求内容</h2>
+          <label>請求先<input id="recipientName" type="text" autocomplete="off" /></label>
+          <div class="grid2">
+            <label>請求書番号<input id="invoiceNumber" type="text" autocomplete="off" /></label>
+            <label>取引年月日<input id="issueDate" type="date" /></label>
+            <label>支払期限<input id="dueDate" type="date" /></label>
+            <label>消費税の端数処理
+              <select id="rounding">
+                <option value="floor">切り捨て</option>
+                <option value="round">四捨五入</option>
+                <option value="ceil">切り上げ</option>
+              </select>
+            </label>
+          </div>
+          <h3>明細（単価は税抜）</h3>
+          <div id="items"></div>
+          <button type="button" id="add-item" class="secondary">＋ 明細を追加</button>
+          <label>振込先<textarea id="bankInfo" rows="2"></textarea></label>
+          <label>備考<textarea id="notes" rows="2"></textarea></label>
+          <p id="errors" class="error" role="alert"></p>
+        </section>
+
+        <section class="card">
+          <h2>保存・書き出し</h2>
+          <div class="actions">
+            <button type="button" id="print">印刷 / PDFに保存</button>
+            <button type="button" id="export-csv" class="secondary">CSVダウンロード</button>
+            <button type="button" id="export-json" class="secondary">バックアップ(JSON)</button>
+            <label class="file secondary">バックアップを読み込む<input id="import-json" type="file" accept=".json,application/json" /></label>
+            <button type="button" id="clear" class="secondary">入力を全消去</button>
+          </div>
+          <p class="note">入力内容は自動的にこのブラウザ内（localStorage）へ保存されます。ブラウザのデータを消去すると失われるため、JSONでバックアップしてください。</p>
+          <p id="status" class="ok" role="status"></p>
+        </section>
+      </main>
+
+      <section id="preview" aria-label="請求書プレビュー"></section>
+
+      <footer class="no-print">
+        <p>本ツールは請求書作成の補助を目的とした一般的なものであり、税務・法律上の助言ではありません。適格請求書の要件や税率・端数処理の最終確認は国税庁の公表資料や税理士等の専門家にご確認ください。</p>
+        <p>プライバシー: 入力データは外部へ送信されません。アクセス解析・外部通信はありません。</p>
+      </footer>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
