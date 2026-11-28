@@ -7,7 +7,7 @@ test('日本語の見出し・ラベル・免責が正しく表示される', as
   await expect(page.getByText('登録不要')).toBeVisible()
   await expect(page.getByText('給与収入（年収・額面・円）')).toBeVisible()
   await expect(page.getByRole('heading', { name: 'ご利用にあたって（免責）' })).toBeVisible()
-  expect(await page.locator('body').innerText()).not.toContain('�')
+  expect(await page.locator('body').innerText()).not.toContain('\uFFFD')
 })
 
 test('入力すると結果が更新され、配偶者ありで下がる', async ({ page }) => {
